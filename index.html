@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서울시 대기질 정보</title>
+<style>
+  body { font-family: 'Apple SD Gothic Neo', Arial, sans-serif; margin: 0; background: #f4f6f8; color: #222; }
+  header { background: #2b6cb0; color: white; padding: 24px; text-align: center; }
+  main { max-width: 900px; margin: 24px auto; padding: 0 16px; }
+  .card { background: white; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .metric { text-align: center; padding: 16px; border-radius: 8px; background: #edf2f7; }
+  .metric h3 { margin: 0 0 8px; font-size: 14px; color: #555; }
+  .metric p { margin: 0; font-size: 28px; font-weight: bold; }
+  footer { text-align: center; color: #888; padding: 16px; font-size: 12px; }
+  select, button { padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>서울시 대기질 정보</h1>
+  <p>구별 실시간 대기오염 현황을 확인하세요</p>
+</header>
+<main>
+  <div class="card">
+    <label for="district">자치구 선택: </label>
+    <select id="district">
+      <option>종로구</option>
+      <option>중구</option>
+      <option>용산구</option>
+      <option>성동구</option>
+      <option>강남구</option>
+      <option>서초구</option>
+      <option>마포구</option>
+    </select>
+    <button id="refreshBtn">새로고침</button>
+  </div>
+
+  <div class="card">
+    <h2>현재 대기질 지표</h2>
+    <div class="grid">
+      <div class="metric"><h3>미세먼지 (PM10)</h3><p id="pm10">-- ㎍/㎥</p></div>
+      <div class="metric"><h3>초미세먼지 (PM2.5)</h3><p id="pm25">-- ㎍/㎥</p></div>
+      <div class="metric"><h3>통합대기환경지수 (CAI)</h3><p id="cai">--</p></div>
+      <div class="metric"><h3>이산화질소 (NO2)</h3><p id="no2">-- ppm</p></div>
+      <div class="metric"><h3>오존 (O3)</h3><p id="o3">-- ppm</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>안내</h2>
+    <p>이 페이지는 서울시 대기질 정보를 보여주기 위한 초기 템플릿입니다. 실제 데이터는 서울 열린데이터광장 또는 에어코리아 API와 연동하여 채울 수 있습니다.</p>
+  </div>
+</main>
+<footer>
+  &copy; 2026 Seoul Air Quality Project
+</footer>
+
+<script>
+  // TODO: 실제 API 연동 (예: 서울 열린데이터광장, 에어코리아 Open API)
+  document.getElementById('refreshBtn').addEventListener('click', () => {
+    document.getElementById('pm10').textContent = Math.floor(Math.random()*80) + ' ㎍/㎥';
+    document.getElementById('pm25').textContent = Math.floor(Math.random()*40) + ' ㎍/㎥';
+    document.getElementById('cai').textContent = Math.floor(Math.random()*200);
+    document.getElementById('no2').textContent = (Math.random()*0.05).toFixed(3) + ' ppm';
+    document.getElementById('o3').textContent = (Math.random()*0.06).toFixed(3) + ' ppm';
+  });
+</script>
+</body>
+</html>
